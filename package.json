@@ -2,6 +2,6 @@
   "name": "instagram-scheduler",
   "private": true,
   "dependencies": {
-    "purecss": "^1.0.0"
+    "skeleton-css": "^2.0.4"
   }
 }
