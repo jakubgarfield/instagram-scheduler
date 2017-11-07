@@ -1,0 +1,7 @@
+{
+  "name": "instagram-scheduler",
+  "private": true,
+  "dependencies": {
+    "purecss": "^1.0.0"
+  }
+}
