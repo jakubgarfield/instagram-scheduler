@@ -1,17 +1,56 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>InstagramScheduler</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Schedule and publish photos to Instagram from your computer</title>
     <%= csrf_meta_tags %>
 
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="container">
+      <header>
+        <nav>
+          <%= link_to "Schedule to Instagram", user_signed_in? ? authenticated_root_path : unauthenticated_root_path, class: "brand" %>
+          <ul>
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+              </li>
+            <% else %>
+              <li><%= link_to "Pricing", pricing_path %></li>
+              <li><%= link_to "Sign up", new_user_registration_path %></li>
+              <li><%= link_to "Log in", new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </header>
 
-    <%= yield %>
+
+      <% if notice.present? || flash[:info] %>
+        <div class="alert alert-info" role="alert">
+          <%= notice || flash[:info] %>
+        </div>
+      <% end %>
+
+      <% if flash[:success] %>
+        <div class="alert alert-success" role="alert">
+          <%= flash[:success] %>
+        </div>
+      <% end %>
+
+      <% if alert.present? || flash[:error] %>
+        <div class="alert alert-error" role="alert">
+          <%= alert || flash[:error] %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>

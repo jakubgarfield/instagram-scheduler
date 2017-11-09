@@ -1,0 +1,42 @@
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :post_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :filepath %>
+    <%= form.text_field :filepath, id: :post_filepath %>
+  </div>
+
+  <div class="field">
+    <%= form.label :scheduled_at %>
+    <%= form.datetime_select :scheduled_at, id: :post_scheduled_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :published_at %>
+    <%= form.datetime_select :published_at, id: :post_published_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :instagram_account_id %>
+    <%= form.text_field :instagram_account_id, id: :post_instagram_account_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

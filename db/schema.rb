@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107091345) do
+ActiveRecord::Schema.define(version: 20171108212816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "instagram_accounts", force: :cascade do |t|
+    t.string "username"
+    t.string "encrypted_password"
+    t.string "encrypted_password_iv"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_instagram_accounts_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.string "filepath"
+    t.datetime "scheduled_at"
+    t.datetime "published_at"
+    t.bigint "instagram_account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instagram_account_id"], name: "index_posts_on_instagram_account_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,4 +53,6 @@ ActiveRecord::Schema.define(version: 20171107091345) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "instagram_accounts", "users"
+  add_foreign_key "posts", "instagram_accounts"
 end

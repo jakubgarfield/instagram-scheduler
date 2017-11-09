@@ -1,0 +1,13 @@
+<%= errors_for(@instagram_account) %>
+
+<%= form_with(model: instagram_account, local: true) do |form| %>
+  <%= form.label :username, "Instagram Username" %>
+  <%= form.text_field :username, id: :instagram_account_username, autofocus: true, class: "u-full-width" %>
+
+  <%= form.label :password %>
+  <%= form.password_field :password, id: :instagram_account_password, class: "u-full-width" %>
+
+  <%= form.submit "Add", class: "button-primary" %>
+<% end %>
+
+<p><small>Due to limitations and restrictions in Instagram API we need to sign you through your Instagram username and password. Your details are stored securely in our system and can't be accessed or read by anyone else. In other words your account is safe with us and you can save time by scheduling and posting your images.</small></p>

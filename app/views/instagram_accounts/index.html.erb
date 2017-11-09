@@ -1,0 +1,24 @@
+<h1>Instagram Accounts</h1>
+
+<%= link_to 'Add new', new_instagram_account_path, class: "button #{current_user.instagram_accounts.any? ? "" : "button-primary"}" %>
+
+<table class="u-full-width instagram-accounts">
+  <thead>
+    <tr>
+      <th></th>
+      <th class="actions"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @instagram_accounts.each do |instagram_account| %>
+      <tr>
+        <td><%= link_to "@#{instagram_account.username}", instagram_account %></td>
+        <td><%= link_to 'Publish', new_post_path, class: "button button-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

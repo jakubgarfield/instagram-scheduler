@@ -10,6 +10,34 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require skeleton-css/css/normalize
+ *= require skeleton-css/css/skeleton
  *= require_tree .
  *= require_self
  */
+
+body { max-width: 800px; margin: 0 auto; font-size: 15px; }
+.main { padding: 0 1em; }
+
+form { max-width: 400px; }
+
+header nav { display: flex; margin: 1em 0; justify-content: space-between; }
+header nav li:first-child { padding-left: 0; }
+header nav li { list-style: none; display: inline-block; padding-left: 1em; }
+header nav a { text-decoration: none; }
+header .brand { font-size: 1.5em; }
+
+.alert { margin-bottom: 1em; border-left: 3px solid black; padding: 1em 1em 1em 1.5em; }
+.alert-error { border-color: #d9534f; background: #fdf7f7; }
+.alert-info { border-color: #1EAEDB; background: #effbff; }
+.alert-success { border-color: #36e530; background: #f2fff2; }
+.alert ul { margin-bottom: 0; }
+
+.field_with_errors input { border-color: #d9534f; }
+
+.instagram-accounts .actions { width: 120px; }
+
+@media (max-width: 480px) {
+  header nav, header nav li { display: block; }
+  header nav li, header > a { margin: 1em 0; padding-left: 0; }
+}

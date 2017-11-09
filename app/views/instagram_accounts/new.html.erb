@@ -1,0 +1,7 @@
+<h1>Connect Instagram Account</h1>
+
+<%= render 'form', instagram_account: @instagram_account %>
+
+<% if current_user.instagram_accounts.size > 1  %>
+  <%= link_to 'Back', instagram_accounts_path %>
+<% end %>

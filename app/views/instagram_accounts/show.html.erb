@@ -1,0 +1,8 @@
+<p>
+  <strong>Username:</strong>
+  <%= @instagram_account.username %>
+  <%= link_to 'Edit', edit_instagram_account_path(@instagram_account) %>
+  <%= link_to 'Destroy', @instagram_account, method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
+
+<%= link_to 'Switch accounts', instagram_accounts_path, class: "button" %>
