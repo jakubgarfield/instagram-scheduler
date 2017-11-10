@@ -2,9 +2,13 @@ class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   storage :file
+
   process resize_to_limit: [1080, 1080]
+  process :strip
+
   version :thumb do
     process resize_to_fill: [150, 150]
+    process :strip
   end
 
   def store_dir
@@ -30,6 +34,14 @@ class PictureUploader < CarrierWave::Uploader::Base
       else
         @width, @height = `identify -format "%wx %h" #{file.path}`.split(/x/).map{|dim| dim.to_i }
       end
+    end
+  end
+
+  def strip
+    manipulate! do |img|
+      img.strip
+      img = yield(img) if block_given?
+      img
     end
   end
 end
