@@ -2,5 +2,7 @@
 
 <%= render 'form', post: @post %>
 
-<%= link_to 'Back', instagram_account_path(@post.instagram_account) %>
-| <%= link_to 'Delete', instagram_account_post_path(@post.instagram_account), method: :delete, data: { confirm: "Are you sure?" } %>
+<div class="space-between">
+  <%= link_to 'Back', instagram_account_path(@post.instagram_account) %>
+  <%= link_to 'Delete', instagram_account_post_path(@post.instagram_account), method: :delete, data: { confirm: "Are you sure?" } %>
+</div>

@@ -1,6 +1,9 @@
 <h2>@<%= @instagram_account.username %></h2>
 
-<%= link_to 'Schedule', new_instagram_account_post_path(@instagram_account), class: "button button-primary"  %>
+<div class="space-between">
+  <%= link_to 'Schedule', new_instagram_account_post_path(@instagram_account), class: "button button-primary"  %>
+  <%= link_to 'Switch accounts', instagram_accounts_path, class: "button" %>
+</div>
 
 <% if @instagram_account.posts.any? %>
   <table class="u-full-width">
@@ -24,6 +27,5 @@
   </table>
 <% end %>
 
-<%= link_to 'Switch accounts', instagram_accounts_path, class: "button" %>
 
 <p>@<%= @instagram_account.username %> | <%= link_to 'Edit', edit_instagram_account_path(@instagram_account) %></p>
