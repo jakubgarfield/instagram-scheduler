@@ -5,6 +5,7 @@ class InstagramAccount < ApplicationRecord
 
   attr_encrypted :password, key: Base64.decode64(Rails.application.secrets.encryption_key)
 
+  validates :user, presence: true
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true
   validate :valid_credentials

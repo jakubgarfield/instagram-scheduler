@@ -1,8 +1,29 @@
-<p>
-  <strong>Username:</strong>
-  <%= @instagram_account.username %>
-  <%= link_to 'Edit', edit_instagram_account_path(@instagram_account) %>
-  <%= link_to 'Destroy', @instagram_account, method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
+<h2>@<%= @instagram_account.username %></h2>
+
+<%= link_to 'Schedule', new_instagram_account_post_path(@instagram_account), class: "button button-primary"  %>
+
+<% if @instagram_account.posts.any? %>
+  <table class="u-full-width">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Scheduled at</th>
+        <th>Published at</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @instagram_account.posts.order(scheduled_at: :desc).each do |post| %>
+        <tr>
+          <td><%= image_tag(post.picture.thumb.url, height: 150, width: 150) %></td>
+          <td><%= (post.published_at || post.message).present? ? post.scheduled_at.to_formatted_s(:long) : link_to(post.scheduled_at.to_formatted_s(:long), edit_instagram_account_post_path(@instagram_account, post)) %></td>
+          <td><%= post.message || post.published_at.try(:to_formatted_s, :long) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
 <%= link_to 'Switch accounts', instagram_accounts_path, class: "button" %>
+
+<p>@<%= @instagram_account.username %> | <%= link_to 'Edit', edit_instagram_account_path(@instagram_account) %></p>

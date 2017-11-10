@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :posts
-  resources :instagram_accounts, path: :accounts
+  resources :instagram_accounts, path: :accounts do
+    resources :posts, only: [:new, :create, :edit, :update, :destroy]
+  end
+
   get "pricing", to: "home#pricing"
 
   devise_for :users

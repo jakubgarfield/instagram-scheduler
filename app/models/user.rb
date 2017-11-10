@@ -4,4 +4,6 @@ class User < ApplicationRecord
 
   has_many :instagram_accounts
   has_many :posts, through: :instagram_accounts
+
+  validates :timezone, presence: true
 end

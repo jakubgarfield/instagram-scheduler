@@ -19,6 +19,9 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation, autocomplete: "off", class: "u-full-width" %>
 
+  <%= f.label :timezone %>
+  <%= f.time_zone_select :timezone %>
+
   <%= f.label :current_password %>
   <i>(we need your current password to confirm your changes)</i>
   <%= f.password_field :current_password, autocomplete: "off", class: "u-full-width" %>

@@ -1,27 +1,22 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_instagram_account
+  before_action :set_post, only: [:edit, :update, :destroy]
   before_action :check_instagram_account_presence
 
-  def index
-    @posts = Post.all
-  end
-
-  def show
-  end
-
   def new
-    @post = Post.new
+    @post = @instagram_account.posts.new(scheduled_at: Time.now)
   end
 
   def edit
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = @instagram_account.posts.new(post_params)
+    @post.picture = params[:post][:file]
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to instagram_account_path(@instagram_account), notice: 'Picture was scheduled successfully.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -33,7 +28,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to instagram_account_path(@instagram_account), notice: 'Picture was scheduled successfully.' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -45,18 +40,22 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to instagram_account_path(@instagram_account), notice: 'Picture was deleted.' }
       format.json { head :no_content }
     end
   end
 
   private
 
+  def set_instagram_account
+    @instagram_account = current_user.instagram_accounts.find(params[:instagram_account_id])
+  end
+
   def set_post
-    @post = Post.find(params[:id])
+    @post = @instagram_account.posts.find(params[:id])
   end
 
   def post_params
-    params.require(:post).permit(:title, :filepath, :scheduled_at, :published_at, :instagram_account_id)
+    params.require(:post).permit(:title, :scheduled_at)
   end
 end

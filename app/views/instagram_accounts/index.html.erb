@@ -14,11 +14,8 @@
     <% @instagram_accounts.each do |instagram_account| %>
       <tr>
         <td><%= link_to "@#{instagram_account.username}", instagram_account %></td>
-        <td><%= link_to 'Publish', new_post_path, class: "button button-primary" %></td>
+        <td><%= link_to 'Publish', new_instagram_account_post_path(instagram_account), class: "button button-primary" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-

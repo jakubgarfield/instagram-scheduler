@@ -1,42 +1,20 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= errors_for(post) %>
 
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= form_with(model: [post.instagram_account, post], local: true) do |form| %>
+  <%= form.label :title, "Caption" %>
+  <%= form.text_area :title, id: :post_title, autofocus: true, class: "u-full-width" %>
+
+  <% if post.new_record? %>
+    <%= form.label :file, "Picture" %>
+    <%= form.file_field :file, class: "u-full-width" %>
+  <% else %>
+    <%= image_tag(post.picture.thumb.url, height: 150, width: 150) %>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title %>
-  </div>
+  <%= form.label :scheduled_at %>
+  <%= form.datetime_select :scheduled_at, id: :post_scheduled_at %>
 
-  <div class="field">
-    <%= form.label :filepath %>
-    <%= form.text_field :filepath, id: :post_filepath %>
-  </div>
-
-  <div class="field">
-    <%= form.label :scheduled_at %>
-    <%= form.datetime_select :scheduled_at, id: :post_scheduled_at %>
-  </div>
-
-  <div class="field">
-    <%= form.label :published_at %>
-    <%= form.datetime_select :published_at, id: :post_published_at %>
-  </div>
-
-  <div class="field">
-    <%= form.label :instagram_account_id %>
-    <%= form.text_field :instagram_account_id, id: :post_instagram_account_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit "Schedule", class: "button-primary" %>
 <% end %>
+
+<p><strong>Pro tip:</strong> If you want to publish your picture now leave the current time as is and it gets published within the next 10 minutes.</p>
