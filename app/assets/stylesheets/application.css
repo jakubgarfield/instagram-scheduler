@@ -19,7 +19,7 @@
 body { max-width: 800px; margin: 0 auto; font-size: 15px; }
 .main { padding: 0 1em; }
 
-form { max-width: 400px; }
+form { max-width: 450px; }
 
 header nav { display: flex; margin: 1em 0; justify-content: space-between; }
 header nav li:first-child { padding-left: 0; }
