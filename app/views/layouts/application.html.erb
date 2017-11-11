@@ -3,20 +3,26 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simple way to schedule and post photos to Instagram from your PC. No need to use your phone anymore.">
 
-    <title>Schedule and publish photos to Instagram from your computer</title>
+    <title>ScheduPic :: Schedule and publish photos to Instagram from your computer</title>
     <%= csrf_meta_tags %>
 
     <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   </head>
 
   <body>
     <div class="container">
       <header>
         <nav>
-          <%= link_to "ScheduPic", user_signed_in? ? authenticated_root_path : unauthenticated_root_path, class: "brand" %>
+          <div class="brand">
+            <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1850 1850"><path d="M965.966 601.458q0-14-9-23t-23-9q-66 0-113 47t-47 113q0 14 9 23t23 9q14 0 23-9t9-23q0-40 28-68t68-28q14 0 23-9t9-23zm224 130q0 106-75 181t-181 75q-106 0-181-75t-75-181q0-106 75-181t181-75q106 0 181 75t75 181zm-1024 574h1536v-128h-1536v128zm1152-574q0-159-112.5-271.5t-271.5-112.5q-159 0-271.5 112.5t-112.5 271.5q0 159 112.5 271.5t271.5 112.5q159 0 271.5-112.5t112.5-271.5zm-1024-642h384v-128h-384v128zm-128 192h1536v-256h-828l-64 128h-644v128zm1664-256v1280q0 53-37.5 90.5t-90.5 37.5h-1536q-53 0-90.5-37.5t-37.5-90.5v-1280q0-53 37.5-90.5t90.5-37.5h1536q53 0 90.5 37.5t37.5 90.5z" fill="currentColor"/></svg>
+            <%= link_to "ScheduPic", user_signed_in? ? authenticated_root_path : unauthenticated_root_path %>
+          </div>
           <ul>
             <% if user_signed_in? %>
               <li>
@@ -51,6 +57,15 @@
       <% end %>
 
       <%= yield %>
+    </div>
+
+    <div class="footer center">
+      <p>
+        <a href="mailto:jakub.chodounsky@gmail.com">Contact</a> &middot;
+        <a href="mailto:jakub.chodounsky@gmail.com">Get Help</a>
+        <br />
+        &copy; ScheduPic <%= Time.now.year %>
+      </p>
     </div>
   </body>
 </html>

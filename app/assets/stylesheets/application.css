@@ -25,7 +25,8 @@ header nav { display: flex; margin: 1em 0; justify-content: space-between; }
 header nav li:first-child { padding-left: 0; }
 header nav li { list-style: none; display: inline-block; padding-left: 1em; }
 header nav a { text-decoration: none; }
-header .brand { font-size: 1.5em; }
+header .brand { font-size: 1.5em; line-height: 32px; }
+header .brand a { vertical-align: top; padding-left: 0.3em; }
 
 .alert { margin-bottom: 1em; border-left: 3px solid black; padding: 1em 1em 1em 1.5em; }
 .alert-error { border-color: #d9534f; background: #fdf7f7; }
@@ -34,10 +35,15 @@ header .brand { font-size: 1.5em; }
 .alert ul { margin-bottom: 0; }
 
 .space-between { display: flex; justify-content: space-between; }
+.center { text-align: center; }
+.big { font-size: 1.5em; font-weight: bold; }
 
 .field_with_errors input, .field_with_errors textarea, .field_with_errors select { border-color: #d9534f; }
 
 .instagram-accounts .actions { width: 120px; }
+.jumbotron { text-align: center; font-size: 1.2em; }
+.jumbotron h1 { font-weight: bold; font-size: 1.7em; }
+.landing h2, .landing h3 { font-size: 2.7rem; }
 
 @media (max-width: 480px) {
   header nav, header nav li { display: block; }
