@@ -10,7 +10,7 @@ Dead simple queue view that totally makes sense. You can chuck a picture of an o
 
 ![Queue view](queue.png)
 
-Yes, you can manage multiple accounts in a wonderfully beautiful way. You can have a specialised account for all your [lomo](https://en.wikipedia.org/wiki/Lomography) stuff. The more Russian your camera brand sounds the better.
+Yes, you can manage multiple accounts in a wonderfully beautiful way. You can have a [specialised account](https://www.instagram.com/polaroid_backpacker) for all your [lomo](https://en.wikipedia.org/wiki/Lomography) stuff. The more Russian your camera brand sounds the better.
 
 ![Multiple accounts](accounts.png)
 
